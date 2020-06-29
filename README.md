@@ -1,0 +1,2 @@
+# InfinityFreeBot
+InfinityFree Discord Bot
