@@ -1,5 +1,6 @@
 import discord
 import os
+import requests
 from dotenv import load_dotenv
 from discord.ext import commands
 
@@ -18,6 +19,7 @@ async def _help(ctx):
 		{ctx.prefix}help - Show this help.
 		{ctx.prefix}about - About InfinityFree.
 		{ctx.prefix}ping - Checks the latency of the bot.
+		{ctx.prefix}requeststest - NO description.
 		"""
 		).set_thumbnail(url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png").set_author(name="InfinityFree",url="https://infinityfree.net/",icon_url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png"))
 
@@ -37,6 +39,19 @@ async def _ping(ctx):
 	"""Checks the latency of the bot."""
 	return await ctx.send(embed=discord.Embed(title="Pong!", description=f"""
 		Total time took: **{round(bot.latency * 1000)} ms**
+		""").set_thumbnail(url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png").set_author(name="InfinityFree", url="https://infinityfree.net", icon_url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png"))
+
+@bot.command(name="requeststest")
+async def _requeststest(ctx):
+	"""NO description."""
+	uri="https://github.com/timeline.json"
+	rgthjk=requests.get(uri)
+	return await ctx.send(embed=discord.Embed(
+		title="Request Info", description=f"""
+		Request URI: `{uri}`
+		Status code: `{rgthjk.status_code}`
+		Content:
+		```{rgthjk.text}```
 		""").set_thumbnail(url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png").set_author(name="InfinityFree", url="https://infinityfree.net", icon_url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png"))
 
 @bot.event
