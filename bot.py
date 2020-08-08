@@ -59,7 +59,7 @@ async def _requeststest(ctx):
 @bot.command(name="user")
 async def _user(ctx, user):
 	"""Returns user info."""
-	jsonreq=requests.get(f"https://zpet.ml/ifUser.php?user={user}")
+	jsonreq=requests.get("https://zpet.ml/ifUser.php", params={user: user})
 	try:
 		req=json.loads(str(jsonreq))
 	except ValueError as e:
