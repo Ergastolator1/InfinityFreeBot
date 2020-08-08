@@ -60,7 +60,7 @@ async def _requeststest(ctx):
 async def _user(ctx, user):
 	"""Returns user info."""
 	jsonreq=requests.get("https://ergastolator.website/ifuser.php", params={user: user})
-	req=json.loads(str(jsonreq))
+	req=json.loads(jsonreq.text)
 	
 	return await ctx.send(embed=discord.Embed(title=f"Info for {req['user']}", description=f"""
 		{req["description"] if req["description"] != None else "No detailed information about this user."}
