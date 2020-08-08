@@ -62,7 +62,7 @@ async def _user(ctx, user):
 	jsonreq=requests.get(f"https://ergastolator.website/ifuser.php?user={user}")
 	req=json.loads(jsonreq.text)
 	
-	return await ctx.send(embed=discord.Embed(title=f"Info for {req['username']}", description=f"```{req["description"]}```").set_thumbnail(url=req["avatar"]).set_author(name="InfinityFree", url="https://infinityfree.net", icon_url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png"))
+	return await ctx.send(embed=discord.Embed(title=f"Info for {req['username']}", description=f"```{req['description']}```").set_thumbnail(url=req["avatar"]).set_author(name="InfinityFree", url="https://infinityfree.net", icon_url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png"))
 
 @bot.event
 async def on_ready():
