@@ -59,7 +59,7 @@ async def _requeststest(ctx):
 @bot.command(name="user")
 async def _user(ctx, user):
 	"""Returns user info."""
-	jsonreq=requests.get("https://zpet.ml/ifUser.php", params={user: user, v: "2"})
+	jsonreq=requests.get("https://ergastolator.website/ifuser.php", params={user: user})
 	req=json.loads(str(jsonreq))
 	
 	return await ctx.send(embed=discord.Embed(title=f"Info for {req['user']}", description=f"""
