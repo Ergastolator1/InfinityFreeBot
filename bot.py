@@ -61,7 +61,7 @@ async def _user(ctx, user):
 	"""Returns user info."""
 	jsonreq=requests.get(f"https://zpet.ml/ifUser.php?user={user}")
 	try:
-		req=json.loads(jsonreq)
+		req=json.loads(str(jsonreq))
 	except ValueError as e:
 		return await ctx.send(embed=discord.Embed(title=f"No user found with {user}!", description=f"""
 			I couldn't find the user specified! Check to make sure the username is correct.
