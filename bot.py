@@ -59,7 +59,7 @@ async def _requeststest(ctx):
 @bot.command(name="user")
 async def _user(ctx, user):
 	"""Returns user info."""
-	jsonreq=requests.get("https://ergastolator.website/ifuser.php", params={user: user})
+	jsonreq=requests.get(f"https://ergastolator.website/ifuser.php?user={user}")
 	req=json.loads(jsonreq.text)
 	
 	return await ctx.send(embed=discord.Embed(title=f"Info for {req['username']}", description=f"""
