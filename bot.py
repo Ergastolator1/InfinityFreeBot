@@ -54,6 +54,21 @@ async def _requeststest(ctx):
 		```{rgthjk.text}```
 		""").set_thumbnail(url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png").set_author(name="InfinityFree", url="https://infinityfree.net", icon_url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png"))
 
+@bot.command(name="user")
+async def _user(ctx, user):
+	"""Returns user info."""
+	jsonreq=requests.get(f"https://zpet.ml/ifUser.php?user={user}")
+	try:
+		req=json.loads(jsonreq)
+	except ValueError as e:
+		return await ctx.send(embed=discord.Embed(title=f"No user found with {user}!", description=f"""
+			I couldn't find the user specified! Check to make sure the username is correct.
+			""").set_thumbnail(url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png").set_author(name="InfinityFree", url="https://infinityfree.net", icon_url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png"))
+	
+	return await ctx.send(embed=discord.Embed(title=f"Info for {req['user']}", description=f"""
+		{req["description"] if req["description"] != None else "No detailed information about this user."}
+		""").set_thumbnail(url=req["avatar"]).set_author(name="InfinityFree", url="https://infinityfree.net", icon_url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png"))
+
 @bot.event
 async def on_ready():
 	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="people using InfinityFree | Type if.help for help."), status=discord.Status.online)
