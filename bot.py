@@ -20,6 +20,7 @@ async def _help(ctx):
 		{ctx.prefix}about - About InfinityFree.
 		{ctx.prefix}ping - Checks the latency of the bot.
 		{ctx.prefix}requeststest - NO description.
+		{ctx.prefix}user - Returns user info.
 		"""
 		).set_thumbnail(url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png").set_author(name="InfinityFree",url="https://infinityfree.net/",icon_url="https://infinityfree.net/assets/apple-touch-icon-90bec27bc0c23919f97f101fb88b861f63ecd026e638acc76da2691db1b82af0.png"))
 
